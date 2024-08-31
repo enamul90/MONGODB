@@ -81,21 +81,82 @@ db.Result.find(
 )
 
 
-comparison Operator
-$eq: Equal Operator
+......comparison Operator......
+$eq: Equal Operator  
+db.juleJSON.find(
+  {
+    "salary":{$eq:75000}
+  }
+)
+
 $lt: Less Than Operator
+db.juleJSON.find(
+  {
+    "salary":{$lt:75000}
+  }
+)
+
 $lte: Less Than or Equal Operator
-$lte: Less Than or Equal Operator
+db.juleJSON.find(
+  {
+    "salary":{$lte:75000}
+  }
+)
+
 $gt: Greater Then Operator
 $gte: Greater Then or Equal Operator
 $ne: Not Equal Operator
-$in: in Operator
-$nin: Not in Operator
 
-Logical Operator
+$in: in Operator
+db.juleJSON.find(
+  {
+    "salary":{$in:[32000,75000]}
+  }
+)
+
+$nin: Not in Operator
+db.juleJSON.find(
+  {
+    "salary":{$nin:[32000,75000]}
+  }
+)
+
+.....Logical Operator.....
 $and: Logical AND 
+db.juleJSON.find({
+  $and:[
+    {"salary":{$eq: 62000}},
+    {"name":{$eq:"Kamrul Islam"}}
+  ]
+}
+)
+
 $or: Logical OR 
+db.juleJSON.find({
+  $or:[
+    {"salary":{$eq:75000}},
+    {"name":{$eq:"Kamrul Islam"}}
+  ]
+}
+)
+
 $not: Logical NOT  
 $nor: Logical NOR
+
+.....Element Query Operator.....
+$exists: 
+db.Result.find(
+  {
+    fatherName:{$exists:true}
+  }
+)
+
+$type:
+db.juleJSON.find(
+  {
+    salary:{$type:2}
+  }
+)
+
 */
 
