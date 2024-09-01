@@ -158,5 +158,29 @@ db.juleJSON.find(
   }
 )
 
+
+
+db.Budget.find({
+  $expr:{
+    $eq:["$budget","$spant"]
+  }
+})
+
+
+db.Budget.find({
+  spant:{
+    $mod:[4,3]
+  }
+})
+
+db.Budget.find({
+  category:{
+    $regex:"R"
+  }
+})
+
 */
 
+db.Budget.find(
+  {$where:"this.budget>this.spant"}
+)
