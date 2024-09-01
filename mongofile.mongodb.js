@@ -179,8 +179,40 @@ db.Budget.find({
   }
 })
 
+
+
+db.Budget.find().sort({
+  category:1
+})
+
+db.Budget.find().count('total')
+
+
+
+db.Budget.find().limit(2)
+
+db.Budget.find().sort({"_id":-1}).limit(2)
+
+db.Budget.distinct('category')
+
+db.Budget.deleteOne({
+  "_id":ObjectId("66d492533df84c191254d47e")
+})
+
+
+db.Budget.deleteMany({
+  budget:{$eq:200}
+})
+
 */
 
+
+
+
+
+
+/*
 db.Budget.find(
   {$where:"this.budget>this.spant"}
 )
+*/
