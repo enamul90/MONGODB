@@ -211,8 +211,12 @@ db.Budget.deleteMany({
 
 
 
-/*
-db.Budget.find(
-  {$where:"this.budget>this.spant"}
-)
-*/
+
+
+db.Budget.find({ $where: "this.spant>this.budget"
+})
+
+
+// db.Budget.find({
+//   $expr: { $eq: ["$budget", "$spant"] }
+// });
