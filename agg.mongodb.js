@@ -1,5 +1,7 @@
 use('School')
 
+/*
+
 // basic aggregation
 db.Budget.aggregate([])
 
@@ -98,3 +100,88 @@ db.Budget.aggregate(
         {$limit:4}
     ]
 )
+
+
+
+// aggregation Group (show unique)
+db.Budget.aggregate(
+    [
+        {$group:{_id:"$budget"}}
+    ]
+)
+
+
+
+// aggregation Group sum (show Group Sum Result)
+db.Budget.aggregate(
+    [
+        {$group:{_id:"$category",total:{$sum:"$budget"}}}
+    ]
+)
+
+
+
+// aggregation Group avg (show Group Average Result)
+db.Budget.aggregate(
+    [
+        {$group:{_id:"$category",total:{$avg:"$budget"}}}
+    ]
+)
+
+
+
+// aggregation Group avg (show Group Average Result)
+db.Budget.aggregate(
+    [
+        {$group:{_id:"$category",max:{$max:"$budget"}}}
+    ]
+)
+
+
+db.Budget.aggregate(
+    [
+        {$group:{_id:"$category",min:{$min:"$budget"}}}
+    ]
+)
+
+// aggregation (max, min, avg)
+db.Budget.aggregate(
+    [
+        {$group:{_id:0,max:{$max:"$budget"}}}
+    ]
+)
+
+db.Budget.aggregate(
+    [
+        {$group:{_id:0,min:{$min:"$budget"}}}
+    ]
+)
+
+db.Budget.aggregate(
+    [
+        {$group:{_id:0,avg:{$avg:"$budget"}}}
+    ]
+)
+
+db.Budget.aggregate(
+    [
+        {$group:{_id:{Category:"$category", budget:"$budget"}, sum:{$sum:"$budget"}}}
+    ]
+)
+
+db.Budget.aggregate(
+    [
+        {$lookup: {
+          from: collection,
+          localField: field,
+          foreignField: field,
+          as: result
+        }}
+    ]
+)
+
+
+*/
+
+
+
