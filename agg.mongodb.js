@@ -169,6 +169,8 @@ db.Budget.aggregate(
     ]
 )
 
+
+// aggregation Join Table
 db.Budget.aggregate(
     [
         {$lookup: {
@@ -181,7 +183,50 @@ db.Budget.aggregate(
 )
 
 
+// aggregation Multiple pipe lines
+db.family_cost.aggregate(
+    [
+        {   $facet:{
+          "total":[ 
+                {$count: 'total'}
+           ],
+
+           "Two":[]
+         }
+        }
+    ]
+)
+
+
+// aggregation JSON Re-aline
+db.family_cost.aggregate(
+    [
+        {$skip:10},
+        {$limit:2},
+        {
+            $project: {
+          _id:0,
+          User_name:"$name",
+          Income:{$toDouble:"$income"},
+          Rent_Expenses:"$expenses.rent",
+          Groceries_Expenses:"$expenses.groceries",
+          Insurance_Expenses:"$expenses.clothing",
+            }
+        }
+    ]
+)
+
+// aggregation Add new Field
+db.family_cost.aggregate(
+    [
+        {$addFields: {
+          newField: "expression",
+        }},
+        {$project: {
+          expenses:0
+        }}
+    ]
+)
+
 */
-
-
 
